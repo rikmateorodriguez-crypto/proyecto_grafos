@@ -1,0 +1,255 @@
+/* Estilos del sistema de grafos - Bloque A UPEA */
+
+:root
+{
+    --n: #12355b;
+    --r: #c8102e;
+    --b: #d5dde8;
+}
+
+*
+{
+    box-sizing: border-box;
+}
+
+body
+{
+    margin: 0;
+    font: 14px/1.45 "Segoe UI",system-ui,sans-serif;
+    background: #eef2f7;
+    color: #1c2733;
+}
+
+header
+{
+    background: var(--n);
+    color: #fff;
+    padding: 14px 22px;
+}
+
+header h1
+{
+    margin: 0;
+    font-size: 19px;
+}
+
+header p
+{
+    margin: 2px 0 0;
+    opacity: .8;
+    font-size: 12px;
+}
+
+#msg
+{
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    padding: 8px 22px;
+    font-weight: 600;
+    display: none;
+}
+
+.m0
+{
+    background: #dff3e3;
+    color: #1b5e20;
+}
+
+.m1
+{
+    background: #fde2e4;
+    color: #8b0d1c;
+}
+
+.m2
+{
+    background: #fff1cc;
+    color: #7a5200;
+}
+
+main
+{
+    display: grid;
+    grid-template-columns: minmax(0,1.3fr) minmax(0,1fr);
+    gap: 14px;
+    padding: 14px;
+    max-width: 1500px;
+    margin: auto;
+}
+
+@media(max-width:1000px)
+{
+    main
+    {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card
+{
+    background: #fff;
+    border: 1px solid var(--b);
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 14px;
+}
+
+h3
+{
+    margin: 0 0 8px;
+    font-size: 14px;
+    color: var(--n);
+}
+
+h4
+{
+    margin: 0 0 6px;
+    color: var(--n);
+}
+
+svg
+{
+    width: 100%;
+    background: #fafcff;
+    border: 1px solid var(--b);
+    border-radius: 8px;
+    touch-action: none;
+}
+
+.bar
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+button,select,input
+{
+    font: inherit;
+    padding: 6px 10px;
+    border: 1px solid #b8c4d4;
+    border-radius: 6px;
+    background: #fff;
+}
+
+button
+{
+    cursor: pointer;
+    background: var(--n);
+    color: #fff;
+    border: 0;
+    font-weight: 600;
+}
+
+button:hover
+{
+    opacity: .88;
+}
+
+button.s
+{
+    background: #e6ecf4;
+    color: var(--n);
+}
+
+button.d
+{
+    background: var(--r);
+}
+
+button.x
+{
+    padding: 3px 8px;
+    font-size: 12px;
+}
+
+.tabs
+{
+    display: flex;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.tabs button
+{
+    background: #e6ecf4;
+    color: var(--n);
+}
+
+.tabs button.on
+{
+    background: var(--n);
+    color: #fff;
+}
+
+table
+{
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 12.5px;
+    margin: 6px 0;
+}
+
+th,td
+{
+    border: 1px solid var(--b);
+    padding: 3px 6px;
+    text-align: center;
+}
+
+th
+{
+    background: #e6ecf4;
+}
+
+.sc
+{
+    max-height: 230px;
+    overflow: auto;
+}
+
+#out
+{
+    max-height: 430px;
+    overflow: auto;
+}
+
+.f
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(110px,1fr));
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+pre
+{
+    white-space: pre-wrap;
+    background: #f6f8fb;
+    border: 1px solid var(--b);
+    padding: 8px;
+    border-radius: 6px;
+    max-height: 420px;
+    overflow: auto;
+    font-size: 12px;
+}
+
+.ok
+{
+    color: #1b5e20;
+    font-weight: 700;
+}
+
+.no
+{
+    color: var(--r);
+    font-weight: 700;
+}
+
+small
+{
+    color: #5b6b7e;
+}

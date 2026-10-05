@@ -1,0 +1,17 @@
+origen,destino,peso,unidad
+A,B,170,metros
+A,C,165,metros
+B,D,60,metros
+D,F,20,metros
+F,H,50,metros
+H,I,70,metros
+I,J,90,metros
+J,K,180,metros
+K,N,50,metros
+N,M,550,metros
+C,E,70,metros
+E,G,40,metros
+G,H,100,metros
+G,L,350,metros
+L,M,45,metros
+K,L,150,metros

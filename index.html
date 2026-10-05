@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Sistema de Análisis de Redes - Bloque A UPEA</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Sistema Inteligente de Análisis y Optimización de Redes</h1>
+        <p>Bloque A - UPEA · Grafo no dirigido y ponderado (distancias a pie en metros) · DFS · BFS · Dijkstra · Kruskal · Prim</p>
+    </header>
+
+    <div id="msg"></div>
+
+    <main>
+
+        <!-- Columna izquierda: grafo y resultados -->
+        <section>
+
+            <div class="card">
+                <div class="bar">
+                    <b>Origen</b>
+                    <select id="so"></select>
+                    <b>Destino</b>
+                    <select id="sd"></select>
+                    <button onclick="run('dfs')">DFS</button>
+                    <button onclick="run('bfs')">BFS</button>
+                    <button onclick="run('dij')">Dijkstra</button>
+                    <button onclick="run('kru')">Kruskal</button>
+                    <button onclick="run('pri')">Prim</button>
+                    <button class="s" onclick="run('cmp')">Comparar K vs P</button>
+                    <button class="d" onclick="clr()">Limpiar análisis</button>
+                </div>
+
+                <svg id="g" viewBox="0 70 760 380"></svg>
+
+                <small>Arrastre los vértices para reorganizar el dibujo. Rojo = camino/árbol resultante; el número naranja indica el orden de visita.</small>
+            </div>
+
+            <div class="card">
+                <h3>Resultados</h3>
+                <div id="out">
+                    <small>Seleccione origen/destino y ejecute un algoritmo.</small>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Columna derecha: datos, matriz y reporte -->
+        <section class="card">
+
+            <div class="tabs">
+                <button id="b1" onclick="tab(1)">Datos</button>
+                <button id="b2" onclick="tab(2)">Matriz y listas</button>
+                <button id="b3" onclick="tab(3)">Reporte</button>
+            </div>
+
+            <!-- Pestaña 1: datos -->
+            <div class="tab" id="t1">
+
+                <h3>Vértices</h3>
+                <div class="f">
+                    <input id="vi" placeholder="Código">
+                    <input id="vn" placeholder="Nombre">
+                    <input id="vd" placeholder="Descripción">
+                </div>
+                <div class="bar">
+                    <button id="vb" onclick="vsave()">Agregar vértice</button>
+                    <button class="s" onclick="vclr()">Cancelar</button>
+                </div>
+                <div class="sc" id="vt"></div>
+
+                <h3>Aristas</h3>
+                <div class="f">
+                    <select id="ea"></select>
+                    <select id="eb"></select>
+                    <input id="ew" placeholder="Peso (m)" type="number" step="any">
+                </div>
+                <div class="bar">
+                    <button id="eb2" onclick="esave()">Agregar arista</button>
+                    <button class="s" onclick="eclr()">Cancelar</button>
+                </div>
+                <div class="sc" id="et"></div>
+
+                <h3>Archivos y casos de prueba</h3>
+                <div class="bar">
+                    <input type="file" id="ff" accept=".csv,.json">
+                    <small>CSV de vértices (id,nombre,descripcion), CSV de aristas (origen,destino,peso,unidad) o JSON</small>
+                </div>
+                <div class="bar">
+                    <button class="s" onclick="dl('grafo.json',JSON.stringify(exp(),null,1),'application/json')">Exportar JSON</button>
+                    <button class="s" onclick="dl('vertices.csv',csvV(),'text/csv')">Vértices CSV</button>
+                    <button class="s" onclick="dl('aristas.csv',csvE(),'text/csv')">Aristas CSV</button>
+                </div>
+                <div class="bar">
+                    <select id="cs">
+                        <option value="0">Grafo real (Bloque A)</option>
+                        <option value="1">Nodo aislado</option>
+                        <option value="2">Grafo no conexo</option>
+                        <option value="3">Pesos repetidos</option>
+                        <option value="4">Peso negativo (Dijkstra)</option>
+                    </select>
+                    <button class="s" onclick="sample(+$('#cs').value)">Cargar caso</button>
+                    <button class="d" onclick="if(confirm('¿Crear un grafo vacío?')){V=[];E=[];upd()}">Nuevo grafo vacío</button>
+                </div>
+
+            </div>
+
+            <!-- Pestaña 2: matriz y listas (la llena el JS) -->
+            <div class="tab" id="t2" hidden></div>
+
+            <!-- Pestaña 3: reporte -->
+            <div class="tab" id="t3" hidden>
+                <div class="bar">
+                    <button onclick="rep()">Generar reporte</button>
+                    <button class="s" onclick="dl('reporte_grafo.txt',$('#rp').textContent,'text/plain')">Descargar .txt</button>
+                </div>
+                <pre id="rp">Ejecute los algoritmos y pulse «Generar reporte».</pre>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
